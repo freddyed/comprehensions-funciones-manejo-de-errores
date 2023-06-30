@@ -1,3 +1,5 @@
+# Recibe funciones como argumento
+
 def increment(x):
   return x + 1
 
