@@ -1,26 +1,21 @@
 import utils
+import read_csv
+import charts
 
-data = [
-    {
-        'Country': 'Colombia',
-        'Population': 500
-    },
-    {
-        'Country': 'Bolivia',
-        'Population': 300
-    }
-]
 
 def run():
-    keys, values = utils.get_population()
-    print(keys, values)
 
-
-
-    country = input('Type Country => ')
+    data = read_csv.read_csv('./app/data.csv')
+    country = input('Type your country => ')
 
     result = utils.population_by_country(data, country)
-    print(result)
+
+    if len(result) > 0:
+        country = result[0]
+        labels, values = utils.get_population(country)
+        charts.generate_bar_chart(labels, values)
+
+
 
 # Llama almetodo run() si es corrido desde la terminal
 # permite una dualidad de correr como script o por terminal
